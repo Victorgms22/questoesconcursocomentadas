@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as OfertaFarmacologiaRouteImport } from './routes/oferta-farmacologia'
+import { Route as OfertaQuestoesRouteImport } from './routes/oferta-questoes'
+import { Route as OfertaQuestoesEspecialRouteImport } from './routes/oferta-questoes-especial'
+import { Route as OfertaSaeRouteImport } from './routes/oferta-sae'
+import { Route as OfertaSimuladosRouteImport } from './routes/oferta-simulados'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaFarmacologiaRoute = OfertaFarmacologiaRouteImport.update({
+  id: '/oferta-farmacologia',
+  path: '/oferta-farmacologia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaQuestoesRoute = OfertaQuestoesRouteImport.update({
+  id: '/oferta-questoes',
+  path: '/oferta-questoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaQuestoesEspecialRoute = OfertaQuestoesEspecialRouteImport.update({
+  id: '/oferta-questoes-especial',
+  path: '/oferta-questoes-especial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaSaeRoute = OfertaSaeRouteImport.update({
+  id: '/oferta-sae',
+  path: '/oferta-sae',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaSimuladosRoute = OfertaSimuladosRouteImport.update({
+  id: '/oferta-simulados',
+  path: '/oferta-simulados',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
+  '/oferta-farmacologia': typeof OfertaFarmacologiaRoute
+  '/oferta-questoes': typeof OfertaQuestoesRoute
+  '/oferta-questoes-especial': typeof OfertaQuestoesEspecialRoute
+  '/oferta-sae': typeof OfertaSaeRoute
+  '/oferta-simulados': typeof OfertaSimuladosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
+  '/oferta-farmacologia': typeof OfertaFarmacologiaRoute
+  '/oferta-questoes': typeof OfertaQuestoesRoute
+  '/oferta-questoes-especial': typeof OfertaQuestoesEspecialRoute
+  '/oferta-sae': typeof OfertaSaeRoute
+  '/oferta-simulados': typeof OfertaSimuladosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/obrigado': typeof ObrigadoRoute
+  '/oferta-farmacologia': typeof OfertaFarmacologiaRoute
+  '/oferta-questoes': typeof OfertaQuestoesRoute
+  '/oferta-questoes-especial': typeof OfertaQuestoesEspecialRoute
+  '/oferta-sae': typeof OfertaSaeRoute
+  '/oferta-simulados': typeof OfertaSimuladosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/obrigado'
+    | '/oferta-farmacologia'
+    | '/oferta-questoes'
+    | '/oferta-questoes-especial'
+    | '/oferta-sae'
+    | '/oferta-simulados'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/obrigado'
+    | '/oferta-farmacologia'
+    | '/oferta-questoes'
+    | '/oferta-questoes-especial'
+    | '/oferta-sae'
+    | '/oferta-simulados'
+  id:
+    | '__root__'
+    | '/'
+    | '/obrigado'
+    | '/oferta-farmacologia'
+    | '/oferta-questoes'
+    | '/oferta-questoes-especial'
+    | '/oferta-sae'
+    | '/oferta-simulados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ObrigadoRoute: typeof ObrigadoRoute
+  OfertaFarmacologiaRoute: typeof OfertaFarmacologiaRoute
+  OfertaQuestoesRoute: typeof OfertaQuestoesRoute
+  OfertaQuestoesEspecialRoute: typeof OfertaQuestoesEspecialRoute
+  OfertaSaeRoute: typeof OfertaSaeRoute
+  OfertaSimuladosRoute: typeof OfertaSimuladosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-farmacologia': {
+      id: '/oferta-farmacologia'
+      path: '/oferta-farmacologia'
+      fullPath: '/oferta-farmacologia'
+      preLoaderRoute: typeof OfertaFarmacologiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-questoes': {
+      id: '/oferta-questoes'
+      path: '/oferta-questoes'
+      fullPath: '/oferta-questoes'
+      preLoaderRoute: typeof OfertaQuestoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-questoes-especial': {
+      id: '/oferta-questoes-especial'
+      path: '/oferta-questoes-especial'
+      fullPath: '/oferta-questoes-especial'
+      preLoaderRoute: typeof OfertaQuestoesEspecialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-sae': {
+      id: '/oferta-sae'
+      path: '/oferta-sae'
+      fullPath: '/oferta-sae'
+      preLoaderRoute: typeof OfertaSaeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta-simulados': {
+      id: '/oferta-simulados'
+      path: '/oferta-simulados'
+      fullPath: '/oferta-simulados'
+      preLoaderRoute: typeof OfertaSimuladosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ObrigadoRoute: ObrigadoRoute,
+  OfertaFarmacologiaRoute: OfertaFarmacologiaRoute,
+  OfertaQuestoesRoute: OfertaQuestoesRoute,
+  OfertaQuestoesEspecialRoute: OfertaQuestoesEspecialRoute,
+  OfertaSaeRoute: OfertaSaeRoute,
+  OfertaSimuladosRoute: OfertaSimuladosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
