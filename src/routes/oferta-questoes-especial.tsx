@@ -23,7 +23,7 @@ export const Route = createFileRoute("/oferta-questoes-especial")({
       badge="Preço especial para você"
       title="200 Questões Comentadas de Concursos de Enfermagem"
       subtitle="Treine com questões organizadas por área, entenda o porquê de cada alternativa e confira o gabarito ao final."
-      price="R$ 24,90"
+      price="R$ 19,90" oldPrice="R$ 24,90"
       sectionTitle="As dez áreas de estudo"
       features={[
         ...areas,
