@@ -54,6 +54,7 @@
   --color-navy: var(--navy);
   --color-teal: var(--teal);
   --color-teal-soft: var(--teal-soft);
+  --color-teal-bright: var(--teal-bright);
   --color-timer: var(--timer);
   --color-on-navy: var(--on-navy);
   --color-on-navy-muted: var(--on-navy-muted);
@@ -80,6 +81,7 @@
   --navy: oklch(0.3 0.08 260);
   --teal: oklch(0.52 0.09 195);
   --teal-soft: oklch(0.95 0.03 195);
+  --teal-bright: oklch(0.79 0.11 190);
   --timer: oklch(0.88 0.17 92);
   --on-navy: oklch(0.98 0.008 220);
   --on-navy-muted: oklch(0.82 0.03 220);

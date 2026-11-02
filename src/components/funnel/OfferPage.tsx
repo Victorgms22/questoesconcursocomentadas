@@ -41,7 +41,7 @@ function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <div className="flex items-center gap-2.5">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-navy">
-            <Stethoscope className="h-5 w-5 text-teal" />
+            <Stethoscope className="h-5 w-5 text-teal-bright" />
           </span>
           <span className="font-display text-base font-bold text-navy">Enfermagem em Estudo</span>
         </div>
@@ -58,7 +58,7 @@ export function Shell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background">
       <TopBanner />
       <Header />
-      <main className="mx-auto max-w-6xl px-4 py-8 pb-28 sm:py-12 md:pb-12">{children}</main>
+      <main className="mx-auto max-w-6xl px-4 py-8 pb-32 sm:py-12 md:pb-12">{children}</main>
       <footer className="border-t bg-card py-8">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <div className="flex items-center justify-center gap-2 text-navy">
@@ -111,12 +111,17 @@ export function OfferPage(props: {
   oldPrice?: string;
   sectionTitle: string;
   features: Feature[];
+  /** Cards compactos em 5 colunas, para listas longas como as dez áreas. */
+  dense?: boolean;
+  extrasTitle?: string;
+  extras?: Feature[];
   includes: string[];
   image: string;
   imageAlt: string;
 }) {
   const time = useCountdown();
   const off = discountPct(props.price, props.oldPrice);
+  const dense = Boolean(props.dense);
 
   return (
     <Shell>
@@ -125,11 +130,11 @@ export function OfferPage(props: {
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden />
         <div className="relative grid items-center gap-10 md:grid-cols-[1.08fr_0.92fr]">
           <div>
-            <p className="text-[11px] font-extrabold tracking-[0.22em] text-teal uppercase">
+            <p className="text-[11px] font-extrabold tracking-[0.22em] text-teal-bright uppercase">
               {props.step}
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold text-on-navy">
-              <BadgePercent className="h-3.5 w-3.5 text-teal" /> {props.badge}
+            <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-on-navy/20 bg-on-navy/10 px-3 py-1 text-xs font-bold text-on-navy">
+              <BadgePercent className="h-3.5 w-3.5 text-teal-bright" /> {props.badge}
             </span>
             <h1 className="mt-4 text-3xl leading-[1.12] font-bold text-on-navy sm:text-5xl">
               {props.title}
@@ -139,13 +144,13 @@ export function OfferPage(props: {
             </p>
             <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2.5 text-sm font-bold text-on-navy">
               <li className="inline-flex items-center gap-2">
-                <Download className="h-4 w-4 text-teal" /> Acesso digital
+                <Download className="h-4 w-4 text-teal-bright" /> Acesso digital
               </li>
               <li className="inline-flex items-center gap-2">
-                <FileText className="h-4 w-4 text-teal" /> Formato PDF
+                <FileText className="h-4 w-4 text-teal-bright" /> Formato PDF
               </li>
               <li className="inline-flex items-center gap-2">
-                <CreditCard className="h-4 w-4 text-teal" /> Pagamento único
+                <CreditCard className="h-4 w-4 text-teal-bright" /> Pagamento único
               </li>
             </ul>
           </div>
@@ -175,24 +180,59 @@ export function OfferPage(props: {
       {/* FEATURES */}
       <section className="mt-14">
         <SectionHeading eyebrow="O que está incluído" title={props.sectionTitle} />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={
+            dense
+              ? "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"
+              : "mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          }
+        >
           {props.features.map((f, i) => (
             <article
               key={f.title}
-              className="relative overflow-hidden rounded-2xl border bg-card p-5 shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45"
+              className={`group relative overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-0.5 hover:border-teal/45 ${dense ? "p-4" : "p-5"}`}
             >
-              <span className="font-display absolute top-4 right-4 text-2xl font-bold text-muted">
+              <span className="font-display absolute top-3 right-3.5 text-xl font-bold text-muted-foreground/35">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-soft">
-                <f.icon className="h-5 w-5 text-teal" />
+              <div
+                className={`flex items-center justify-center rounded-xl bg-teal-soft ${dense ? "h-9 w-9" : "h-11 w-11"}`}
+              >
+                <f.icon className={dense ? "h-4 w-4 text-teal" : "h-5 w-5 text-teal"} />
               </div>
-              <h3 className="mt-4 text-base font-bold text-navy">{f.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
+              <h3 className={`font-bold text-navy ${dense ? "mt-3 text-sm" : "mt-4 text-base"}`}>
+                {f.title}
+              </h3>
+              <p
+                className={`leading-relaxed text-muted-foreground ${dense ? "mt-1 text-xs" : "mt-1.5 text-sm"}`}
+              >
+                {f.text}
+              </p>
             </article>
           ))}
         </div>
       </section>
+
+      {/* EXTRAS */}
+      {props.extras && props.extras.length > 0 && (
+        <section className="mt-12">
+          <SectionHeading eyebrow="Método" title={props.extrasTitle ?? "Como o material funciona"} />
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {props.extras.map((f) => (
+              <article
+                key={f.title}
+                className="rounded-2xl border border-teal/25 bg-teal-soft/45 p-5 shadow-[var(--shadow-card)]"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-card">
+                  <f.icon className="h-5 w-5 text-teal" />
+                </div>
+                <h3 className="mt-4 text-base font-bold text-navy">{f.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* OFFER + PRICE */}
       <section className="mt-14 grid items-start gap-6 lg:grid-cols-[1fr_22rem]">
