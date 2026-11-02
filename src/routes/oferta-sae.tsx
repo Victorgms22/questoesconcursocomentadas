@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DoorOpen, TrendingUp, NotebookPen, Repeat, LogOut, ListChecks } from "lucide-react";
 import { OfferPage, offerHead } from "@/components/funnel/OfferPage";
+import capa from "@/assets/capa-sae.png";
 
 export const Route = createFileRoute("/oferta-sae")({
   head: offerHead("SAE e Anotações de Enfermagem: 40 Modelos", "Modelos de referência para admissão, evolução, anotação, passagem de plantão, alta e checklists."),
@@ -21,8 +22,8 @@ export const Route = createFileRoute("/oferta-sae")({
         { icon: ListChecks, title: "Checklists", text: "Listas de verificação para a rotina." },
       ]}
       includes={["40 modelos de referência", "Admissão, evolução, anotação, plantão e alta", "Checklists", "Acesso digital em PDF"]}
-      acceptId="cakto-accept-sae"
-      declineId="cakto-decline-sae"
+      image={capa}
+      imageAlt="Capa do material SAE e Anotações de Enfermagem: 40 Modelos"
     />
   ),
 });

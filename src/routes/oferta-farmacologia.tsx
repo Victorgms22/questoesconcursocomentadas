@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Pill, Stethoscope, Syringe, AlertTriangle, HeartHandshake } from "lucide-react";
 import { OfferPage, offerHead } from "@/components/funnel/OfferPage";
+import capa from "@/assets/capa-farmacologia.png";
 
 export const Route = createFileRoute("/oferta-farmacologia")({
   head: offerHead("Farmacologia Aplicada: 80 Fármacos Mais Cobrados", "Classes, usos, vias de administração, efeitos adversos e cuidados de Enfermagem."),
@@ -20,8 +21,8 @@ export const Route = createFileRoute("/oferta-farmacologia")({
         { icon: HeartHandshake, title: "Cuidados de Enfermagem", text: "Pontos práticos antes, durante e após a administração." },
       ]}
       includes={["80 fármacos organizados por classe", "Usos, vias e efeitos adversos", "Cuidados de Enfermagem", "Acesso digital em PDF"]}
-      acceptId="cakto-accept-farmacologia"
-      declineId="cakto-decline-farmacologia"
+      image={capa}
+      imageAlt="Capa do material Farmacologia Aplicada: 80 Fármacos Mais Cobrados"
     />
   ),
 });

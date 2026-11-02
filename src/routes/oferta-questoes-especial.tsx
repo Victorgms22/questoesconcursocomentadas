@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Brain, HeartPulse, Baby, Syringe, ShieldPlus, Users, Scale, Activity, Pill, ClipboardList, MessageSquareText, ListChecks, Target } from "lucide-react";
 import { OfferPage, offerHead } from "@/components/funnel/OfferPage";
+import capa from "@/assets/capa-questoes.png";
 
 const areas = [
   { icon: Scale, title: "Legislação do SUS", text: "Princípios, diretrizes e Lei 8.080/90." },
@@ -32,8 +33,8 @@ export const Route = createFileRoute("/oferta-questoes-especial")({
         { icon: ListChecks, title: "Gabarito", text: "Gabarito completo para corrigir seu desempenho." },
       ]}
       includes={["200 questões em 10 áreas", "Comentário explicativo em cada questão", "Gabarito completo", "Acesso digital em PDF"]}
-      acceptId="cakto-accept-questoes-especial"
-      declineId="cakto-decline-questoes-especial"
+      image={capa}
+      imageAlt="Capa do material 200 Questões Comentadas para concursos de Enfermagem"
     />
   ),
 });
