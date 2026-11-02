@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Brain, HeartPulse, Baby, Syringe, ShieldPlus, Users, Scale, Activity, Pill, ClipboardList, MessageSquareText, ListChecks, Target } from "lucide-react";
 import { OfferPage, offerHead } from "@/components/funnel/OfferPage";
+import capa from "@/assets/capa-questoes.png";
 
 const areas = [
   { icon: Scale, title: "Legislação do SUS", text: "Princípios, diretrizes e Lei 8.080/90." },
@@ -15,6 +16,12 @@ const areas = [
   { icon: ClipboardList, title: "Biossegurança", text: "Precauções e controle de infecção." },
 ];
 
+const extras = [
+  { icon: Target, title: "Prática por questões", text: "Ajuda a fixar o conteúdo e reconhecer o estilo das bancas." },
+  { icon: MessageSquareText, title: "Comentários explicativos", text: "Cada questão traz a justificativa da resposta correta." },
+  { icon: ListChecks, title: "Gabarito", text: "Gabarito completo para corrigir seu desempenho." },
+];
+
 export const Route = createFileRoute("/oferta-questoes")({
   head: offerHead("200 Questões Comentadas de Enfermagem", "Pratique com 200 questões comentadas de concursos de Enfermagem em 10 áreas."),
   component: () => (
@@ -25,15 +32,13 @@ export const Route = createFileRoute("/oferta-questoes")({
       subtitle="Treine com questões organizadas por área, entenda o porquê de cada alternativa e confira o gabarito ao final."
       price="R$ 24,90"
       sectionTitle="As dez áreas de estudo"
-      features={[
-        ...areas,
-        { icon: Target, title: "Prática por questões", text: "Ajuda a fixar o conteúdo e reconhecer o estilo das bancas." },
-        { icon: MessageSquareText, title: "Comentários explicativos", text: "Cada questão traz a justificativa da resposta correta." },
-        { icon: ListChecks, title: "Gabarito", text: "Gabarito completo para corrigir seu desempenho." },
-      ]}
+      features={areas}
+      dense
+      extrasTitle="Como o material funciona"
+      extras={extras}
       includes={["200 questões em 10 áreas", "Comentário explicativo em cada questão", "Gabarito completo", "Acesso digital em PDF"]}
-      acceptId="cakto-accept-questoes"
-      declineId="cakto-decline-questoes"
+      image={capa}
+      imageAlt="Capa do material 200 Questões Comentadas para concursos de Enfermagem"
     />
   ),
 });

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Timer, FileCheck2, MessageSquareText, BarChart3 } from "lucide-react";
 import { OfferPage, offerHead } from "@/components/funnel/OfferPage";
+import capa from "@/assets/capa-simulados.png";
 
 export const Route = createFileRoute("/oferta-simulados")({
   head: offerHead("2 Simulados Cronometrados de Enfermagem", "Dois simulados de 50 questões com cartão-resposta, gabarito comentado e quadro de desempenho."),
@@ -19,8 +20,8 @@ export const Route = createFileRoute("/oferta-simulados")({
         { icon: BarChart3, title: "Quadro de desempenho", text: "Registre acertos por área e veja onde reforçar." },
       ]}
       includes={["2 simulados com 50 questões cada", "Cartão-resposta para impressão", "Gabarito comentado", "Quadro de desempenho"]}
-      acceptId="cakto-accept-simulados"
-      declineId="cakto-decline-simulados"
+      image={capa}
+      imageAlt="Capa do material 2 Simulados Cronometrados de Enfermagem"
     />
   ),
 });
